@@ -1,4 +1,5 @@
- #pragma once
+#ifndef FOOL
+#define FOOL
 #include <iostream>
 #include<stdlib.h>
 #include<time.h>//用于产生随即因子
@@ -6,36 +7,36 @@
 using namespace std;
 class fool:public player//从基类派生出的一个类,是关于大傻的~
 {
-public:
-	fool(int i,char*cptr);
-	void LVup();
-	bool attack(player &p);
-	bool special(player &p);
-	void AI(player &p);
+    public:
+        fool(int i,char*cptr);
+        void LVup();
+        bool attack(player &p);
+        bool special(player &p);
+        void AI(player &p);
 };
 fool::fool(int i,char*cptr)
 {
-	role=f;
-	for(int j=0;j<10;j++)
-		name[j]=cptr[j];
-	HP=100+6*(i-1);
-	HPmax=180+6*(i-1);
+    role=f;
+    for(int j=0;j<10;j++)
+        name[j]=cptr[j];
+    HP=100+6*(i-1);
+    HPmax=180+6*(i-1);
     MP=60+8*(i-1);
-	MPmax=75+8*(i-1);
+    MPmax=75+8*(i-1);
     AP=100+3*(i-1);
-	DP=100+3*(i-1);
-	speed=100+10*(i-1);
-	LV=i;
-	death=0;
-	EXP=(LV-1)*(LV-1)*70;
-	bag.set(i*1,i*1,i*8);
+    DP=100+3*(i-1);
+    speed=100+10*(i-1);
+    LV=i;
+    death=0;
+    EXP=(LV-1)*(LV-1)*70;
+    bag.set(i*1,i*1,i*8);
 }
 void fool::LVup()
 {
-	if(EXP>=LV*LV*70)
-	{
-		LV++;
-		AP=AP+1;
+    if(EXP>=LV*LV*70)
+    {
+        LV++;
+        AP=AP+1;
         DP=DP+3;
         HPmax=HPmax+1;
         MPmax=MPmax+3;
@@ -112,5 +113,4 @@ bool fool::special(player &p)
     }
     return 1;
 }
-
-
+#endif
